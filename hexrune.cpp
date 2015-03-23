@@ -31,6 +31,10 @@ class CVector2D {
   float getLength() {
     return sqrt(x*x + y*y);
   };
+  
+  string tostring() {
+    return "[" + to_string(getX()) + "," + to_string(getY()) + "]"; 
+  };
 };
 
 // Horizontally sitting regular hexagon shape class.
@@ -39,16 +43,19 @@ class CHexagonH {
   CVector2D center;
   
   public:
-  string getCenter() {
-  return "(" + to_string(center.getX()) + "," + to_string(center.getY()) + ")"; 
+  CVector2D getCenter() {
+  return center;
   };
   
-  string getDistance() {
-  return to_string(center.getLength()); 
+  float getDistance() {
+  return center.getLength(); 
   };
   
-  string writeProperties(){
-    return 
+  string tostring(){
+    std::ostringstream os ;
+    os << "Hex position is: " << getCenter().tostring() << endl;
+    os << "Hex distance from origin is: " << getDistance() << endl;
+    return os.str() ;
   };
 };
 
@@ -58,9 +65,6 @@ int main(int argc,char* args[]) {
   CHexagonH myHex;
   
   cout << "Hexrune kickoff" <<endl<< "==============="<<endl;
-  
-  cout << "Hex position is: " << myHex.getCenter() << endl;
-  cout << "Hex distance from origin is: " << myHex.getDistance() << endl;
-  
+  cout << myHex.tostring();  
   return 0;
 }
