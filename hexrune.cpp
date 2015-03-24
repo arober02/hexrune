@@ -68,7 +68,7 @@ class Vector2D {
   };
   
   string tostring() {
-    return "[" + to_string(getX()) + "," + to_string(getY()) + "]"; 
+    return "[" + to_string(getX()) + "," + to_string(getY()) + "] : length " + to_string(getLength()); 
   };
 };
 
@@ -104,6 +104,8 @@ int main(int argc,char* args[]) {
   Vector2D myVector1(v1), myVector2;
   
   cout << "Hexrune kickoff" <<endl<< "==============="<<endl;
-  cout << myHex.tostring();  
+  cout << myHex.tostring();
+  
+  cout << myVector1.tostring();
   return 0;
 }
