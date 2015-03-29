@@ -24,6 +24,11 @@ class Vector2D {
     v[1]=0;
   }
   
+  Vector2D(float x,float y) {
+    v[0] = x;
+    v[1] = y;
+  }
+
   Vector2D(float vector[]) {
     v[0]=vector[0];
     v[1]=vector[1];
@@ -75,13 +80,20 @@ class Vector2D {
 // Horizontally sitting regular hexagon shape class.
 class HexagonH {
   private:
-  Vector2D center;
-  
+  Vector2D center(0,0);
+  static float vOffset = 0.86602540378443864676372317075294; // Sqrt(3)/2
+  static float hOffset = 0.5;
+
   public:
   Vector2D getCenter() {
   return center;
   };
   
+  Vector2D getVertex(int i) {
+	  Vector2D vi([2 * hOffset, vOffset]);
+    return center;
+  };
+
   float getDistance() {
   return center.getLength(); 
   };
