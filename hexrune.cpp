@@ -80,32 +80,47 @@ class Vector2D {
 // Horizontally sitting regular hexagon shape class.
 class HexagonH {
   private:
-  Vector2D center(0,0);
-  static float vOffset = 0.86602540378443864676372317075294; // Sqrt(3)/2
-  static float hOffset = 0.5;
+    // Class members
+    static const float vOffset;
+    static const float hOffset;
+
+    static const Vector2D vertex[6];
+
+    // Object properties
+    Vector2D* center=new Vector2D(0,0);
 
   public:
-  Vector2D getCenter() {
-  return center;
+    Vector2D* getCenter() {
+    return center;
   };
   
-  Vector2D getVertex(int i) {
-	  Vector2D vi([2 * hOffset, vOffset]);
+  Vector2D* getVertex(int i) {
+	  Vector2D vi(2 * hOffset, vOffset);
     return center;
   };
 
   float getDistance() {
-  return center.getLength(); 
+    return center->getLength(); 
   };
   
   string tostring(){
     std::ostringstream os ;
-    os << "Hex position is: " << getCenter().tostring() << endl;
+    os << "Hex position is: " << getCenter()->tostring() << endl;
     os << "Hex distance from origin is: " << getDistance() << endl;
     return os.str() ;
   };
 };
 
+const float HexagonH::vOffset = 0.866; // Sqrt(3)/2
+const float HexagonH::hOffset = 0.5;
+const Vector2D HexagonH::vertex[6] = {
+  Vector2D(2.0 * HexagonH::hOffset, 0.0),
+  Vector2D(HexagonH::hOffset, -HexagonH::vOffset),
+  Vector2D(-HexagonH::hOffset, -HexagonH::vOffset),
+  Vector2D(-2.0 * HexagonH::hOffset, 0.0),
+  Vector2D(-HexagonH::hOffset, HexagonH::vOffset),
+  Vector2D(HexagonH::hOffset, HexagonH::vOffset)
+};
 
 
 int main(int argc,char* args[]) {
